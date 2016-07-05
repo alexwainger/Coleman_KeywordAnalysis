@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	d3.csv("../data/test_data.csv", function(d) {return {"text": d.text, "value": +d.value}}, function(data) {
-		var width = 1200,
-			height = 500,
+		var width = 1000,
+			height = 420,
 			minFontSize = 30,
 			maxFontSize = 90,
 			minOpacity = .4,
@@ -40,10 +40,10 @@ $(document).ready(function() {
     		})
     		.text(function(d) { return d.text; })
 			.on("mouseover", function(d) {
-  				d3.select(this).style("fill", "steelblue");
+  				d3.select(this).style("fill", "steelblue").style("opacity", 1);
 			})
 			.on("mouseout", function(d) {
-  				d3.select(this).style("fill", "red");
+  				d3.select(this).style("fill", "red").style("opacity", function(d) { return opacity(d.size) });
 			});
 		};
 
